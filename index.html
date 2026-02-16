@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>ランダムUTMロングURLメーカー</title>
+<style>
+body { font-family: sans-serif; padding: 20px; }
+input, textarea { width: 100%; margin-top: 10px; }
+button { margin-top: 10px; padding: 10px; width: 100%; font-size: 16px; }
+#copyBtn { background: #4CAF50; color: white; }
+</style>
+</head>
+<body>
+<h1>ランダムUTMロングURLメーカー</h1>
+
+<label>元のURL</label>
+<input id="base" placeholder="https://example.com">
+
+<label>追加する文字数（1つのUTMあたり）</label>
+<input id="len" type="number" value="500">
+
+<button onclick="makeLong()">ランダムUTMでURLを伸ばす</button>
+
+<label>結果</label>
+<textarea id="out" rows="4"></textarea>
+
+<button id="copyBtn" onclick="copyURL()">コピーする</button>
+
+<script>
+function randomString(n) {
+  const chars = "abcdefghijklmnopqrstuvwxyz0123456789";
+  let s = "";
+  for (let i = 0; i < n; i++) {
+    s += chars[Math.floor(Math.random() * chars.length)];
+  }
+  return s;
+}
+
+function makeLong() {
+  const base = document.getElementById("base").value;
+  const len = Number(document.getElementById("len").value);
+
+  const utm_source = randomString(len);
+  const utm_medium = randomString(len);
+  const utm_campaign = randomString(len);
+
+  const url = `${base}?utm_source=${utm_source}&utm_medium=${utm_medium}&utm_campaign=${utm_campaign}`;
+
+  document.getElementById("out").value = url;
+}
+
+function copyURL() {
+  const text = document.getElementById("out");
+  text.select();
+  document.execCommand("copy");
+  alert("コピーしました！");
+}
+</script>
+
+</body>
+</html>
