@@ -1,1 +1,11 @@
-# URL-lengthening-tool
+# Random UTM Long URL Maker  
+ランダムな UTM パラメータを生成して、URL を好きなだけ長くできるツールです。  
+フォークなどして改造してください
+---
+
+##  Features / 特徴
+- ランダムな UTM を自動生成  
+- URL を無限に長文化  
+- コピー用ボタン付き  
+- 完全クライアントサイド（安全）
+- 開発:frisk-V3
